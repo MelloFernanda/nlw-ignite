@@ -13,8 +13,15 @@
   --brand-beige: hsl(39, 100%, 97%);
   --brand-light: hsl(148, 23%, 89%);
 
+  --bg-light: hsl(180, 14%, 97%);
+
   font-size: 62.5%;
   --nav-height: 7.2rem;
+}
+
+html {
+  /* chrome://flags/#smooth-scrolling */
+  scroll-behavior: smooth;
 }
 
 html,
@@ -29,6 +36,8 @@ body {
   font-family: 'DM Sans';
 
   overflow: overlay;
+
+  background-color: var(--bg-light);
 }
 
 .wrapper {
@@ -41,19 +50,23 @@ ul {
   list-style: none;
 }
 
-/*=== HEADER =========================*/
-
-header {
-  margin-top: calc(4.1rem + var(--nav-height));
+section {
+  padding-block: 10rem;
 }
 
-header h4 {
+/*=== HOME =========================*/
+
+#home {
+  padding-top: calc(4.1rem + var(--nav-height));
+}
+
+#home h4 {
   font-size: 1.4rem;
   color: var(--primary-color);
   margin-bottom: 1.6rem;
 }
 
-header h1 {
+#home h1 {
   font-size: 3.4rem;
   color: var(--headline);
   line-height: 130%;
@@ -61,7 +74,7 @@ header h1 {
   margin-bottom: 2.4rem;
 }
 
-header p {
+#home p {
   font-size: 1.8rem;
   line-height: 150%;
   font-weight: 400;
@@ -70,7 +83,7 @@ header p {
   margin-bottom: 3.2rem;
 }
 
-header button {
+#home button {
   background: var(--primary-color);
 
   border: none;
@@ -95,7 +108,7 @@ header button {
   margin-left: auto;
 }
 
-header img {
+#home img {
   width: 26.4rem;
   /*retirar espaço entre imagem e demais divs*/
   display: block;
@@ -104,7 +117,7 @@ header img {
   object-position: 0 2rem;
 }
 
-header::before {
+#home::before {
   content: '';
   /*100vw dá erro por contar a barra de rolagem lateral*/
   width: 100%;
@@ -186,7 +199,7 @@ nav.scroll button path {
   stroke: white;
 }
 
-nav button{
+nav button {
   background: none;
   border: none;
   cursor: pointer;
@@ -215,6 +228,10 @@ body.menu-expanded .close-menu {
   visibility: visible;
 }
 
+.menu{
+  transform: translateY(100%);
+}
+
 body.menu-expanded .menu {
   position: fixed;
   top: 0;
@@ -225,6 +242,9 @@ body.menu-expanded .menu {
   height: 100vh;
 
   padding-top: var(--nav-height);
+
+  transition: transform 200ms;
+  transform: translateY(0);
 }
 
 body.menu-expanded nav {
@@ -274,7 +294,6 @@ body.menu-expanded nav {
   gap: 3.2rem;
 }
 
-
 body.menu-expanded .logo,
 body.menu-expanded button {
   position: relative;
@@ -287,4 +306,29 @@ body.menu-expanded .logo path {
 
 body.menu-expanded button path {
   stroke: white;
+}
+
+/*=== SERVICES =========================*/
+#services header h2 {
+  margin-bottom: 6rem;
+}
+
+#services .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+#services .card {
+  padding: 2.4rem;
+  text-align: left;
+
+  background: white;
+
+  border: 1px solid var(--brand-light);
+  border-radius: 0.6rem;
+}
+
+#services .card h3 {
+  margin-block: 1.6rem;
 }
